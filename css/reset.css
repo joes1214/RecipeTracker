@@ -1,0 +1,48 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  /* color-scheme: light dark; */
+}
+
+html,
+body {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+main {
+  width: 100%;
+}
+
+ul {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+* + * {
+  margin-top: 1em;
+}
