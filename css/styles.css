@@ -1,6 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  --font-color: hsl(0, 56%, 7%);
+  --bg-color: hsl(3, 90%, 96%);
+  --primary: hsl(2, 56%, 52%);
+  --secondary: hsl(62, 56%, 72%);
+  --accent: hsl(84, 56%, 61%);
+
+  --tag-bg: hsl(62, 56%, 72%, 75%);
+
+  --border-radius: 0.35em;
+
+  --card-bg-color: hsl(2, 56%, 52%, 5%);
+  --card-box-shadow: hsl(0, 56%, 7%, 20%) 1.95px 1.95px 2.6px;
+}
+
 body {
   display: flex;
   padding: 0.25rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: var(--font-color);
+  background-color: var(--bg-color);
 }
 
 header {
@@ -10,15 +30,20 @@ header {
 h1 {
   width: fit-content;
   margin: 0 auto;
+  padding-bottom: 1em;
 }
 
 .card {
-  outline: 1px black solid;
+  margin: 0 auto;
+  /* outline: 1px black solid; */
   max-width: 500px;
   padding: 0.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow);
 }
 
-ul {
+.ingredients-list {
   padding-left: 0.5rem;
 }
 
@@ -35,4 +60,27 @@ h2 {
 
 .card > header > h2 {
   margin: 0 auto;
+}
+
+.tag-list {
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  line-height: 1.25;
+  background-color: var(--tag-bg);
+  padding: .25em 0.5em;
+  border-radius: var(--border-radius);
+  user-select: none;
+  font-weight: 500;
+}
+
+.recipe-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
