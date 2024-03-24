@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+  <!-- This is used to style and create components before moving them to js -->
+
+  <div>
+    <form class="card new-recipe-form">
+      <div class="form-input">
+        <label for='recipe-name-input' class="form-label">Recipe Name:</label>
+        <input type='text' name='recipe-name-input' id='recipe-name-input' placeholder="Recipe Name" />
+      </div>
+
+      <div class="form-input">
+        <label for='recipe-description' class="form-label">Recipe Description:</label>
+        <textarea id="recipe-description" placeholder="Recipe Description..." rows="4"></textarea>
+      </div>
+
+      <div class="ingredient-input-list">
+        <div class="form-input">
+          <label for='recipe-name-input' class="form-label">Ingredient X:</label>
+          <input type='text' name='recipe-name-input' id='recipe-name-input' placeholder="Ingredient X" />
+        </div>
+
+        <div class="form-input">
+          <label for='recipe-name-input' class="form-label">Ingredient X:</label>
+          <input type='text' name='recipe-name-input' id='recipe-name-input' placeholder="Ingredient X" />
+        </div>
+
+        <button type="button" class="btn">+ Add Another Recipe</button>
+
+        <div class="form-input">
+          <label for='recipe-tags-input' class="form-label">Tags (Seperated by comma):</label>
+          <input type='text' name='recipe-tags-input' id='recipe-name-input' placeholder="Tag1, Tag2, Tag3" />
+        </div>
+
+        <button type="button" class="btn" onsubmit="onSubmit(e)">Submit</button>
+      </div>
+    </form>
+  </div>
+
+
+
+</body>
+
+</html>
