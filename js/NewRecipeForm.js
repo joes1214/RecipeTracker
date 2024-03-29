@@ -37,8 +37,8 @@ class NewRecipeForm extends HTMLElement {
           <input type='text' name='recipe-name-input' id='recipe-name-input' placeholder="Ingredient X" />
         </div>
 
+        </div>
         <button type="button" class="btn">+ Add Ingredient</button>
-      </div>
 
       <div>
       <div class="form-input">

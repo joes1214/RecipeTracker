@@ -86,6 +86,19 @@ h2 {
   margin-bottom: .5rem;
 }
 
+#new-recipe-tab {
+  margin: 1rem auto;
+}
+
+#new-recipe-tab summary {
+  user-select: none;
+  margin: .5rem auto;
+}
+
+#new-recipe-tab summary::marker{
+  content: "";
+}
+
 .recipe-description {
   display: -webkit-box;
   -webkit-line-clamp: 4;
