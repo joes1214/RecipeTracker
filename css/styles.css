@@ -19,15 +19,22 @@
 body {
   display: flex;
   flex-direction: column;
-  /* padding: 0.25rem; */
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   color: var(--font-color);
   background-color: var(--bg-color);
 }
 
+main {
+  flex: 1;
+}
+
 header {
   width: 100%;
+}
+
+.page-header {
+  margin-top: 1em;
 }
 
 footer {
@@ -50,6 +57,10 @@ h1 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
   margin: 0 auto;
   /* outline: 1px black solid; */
   max-width: 500px;
@@ -104,7 +115,7 @@ h2 {
   margin: .5rem auto;
 }
 
-#new-recipe-tab summary::marker{
+#new-recipe-tab summary::marker {
   content: "";
 }
 
@@ -126,7 +137,8 @@ h2 {
   margin-bottom: .25rem;
 }
 
-input, textarea {
+input,
+textarea {
   margin: 0;
   border-radius: .25rem;
   background-color: var(--text-input-bg);
@@ -155,4 +167,8 @@ input, textarea {
 
 .btn:active {
   background-color: hsl(84, 56%, 40%);
+}
+
+.flow > * + * {
+  margin-top: 1em;
 }

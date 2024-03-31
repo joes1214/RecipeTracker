@@ -5,32 +5,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recipe Tracker</title>
-  <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/reset.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 
 <body>
-  <main>
-    <header>
-      <h1>Recipe Tracker</h1>
-    </header>
 
-    <details id="new-recipe-tab" open>
+  <header class="page-header">
+    <h1>Recipe Tracker</h1>
+  </header>
+
+  <main class="flow">
+    <details id="new-recipe-tab">
       <summary class="btn">Add New Recipe</summary>
       <new-recipe-form></new-recipe-form>
     </details>
 
     <script src="/js/NewRecipeForm.js"></script>
+
     <div id="card-recipe" class="card">
       <header>
         <h2>Recipe Name</h2>
       </header>
+
       <p class="recipe-description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
         consequatur, assumenda, a quae neque iste, eveniet facere accusantium
         dignissimos minima sapiente vero. Corrupti dignissimos molestias,
         accusamus amet exercitationem dolorem reiciendis.
       </p>
+      
       <ul class="ingredients-list">
         <li>item X</li>
         <li>item X</li>
@@ -45,6 +49,7 @@
         <li class="tag">tag</li>
       </ul>
     </div>
+
   </main>
 
   <footer>

@@ -29,9 +29,9 @@ template.innerHTML = `
       <label for='recipe-tags-input' class="form-label">Tags (Seperated by comma):</label>
       <input type='text' name='recipe-tags-input' id='recipe-tags-input' placeholder="Tag1, Tag2, Tag3" />
     </div>
-
-    <button type="submit" class="btn" onsubmit="onSubmit(event)">Submit</button>
   </div>
+  
+  <button type="submit" class="btn" onsubmit="onSubmit(event)">Submit</button>
 </form>
 `
 
