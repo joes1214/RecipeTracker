@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Tracker</title>
+    <link rel="stylesheet" href="/css/reset.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <script defer src="/js/CreateCards.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recipe Tracker</title>
-  <link rel="stylesheet" href="/css/reset.css" />
-  <link rel="stylesheet" href="/css/styles.css" />
-</head>
+  <body>
+    <header class="page-header">
+      <h1>Recipe Tracker</h1>
+    </header>
 
-<body>
+    <main class="flow">
+      <details id="new-recipe-tab">
+        <summary class="btn">Add New Recipe</summary>
+        <new-recipe-form></new-recipe-form>
+      </details>
 
-  <header class="page-header">
-    <h1>Recipe Tracker</h1>
-  </header>
+      <script src="/js/NewRecipeForm.js"></script>
 
-  <main class="flow">
-    <details id="new-recipe-tab">
-      <summary class="btn">Add New Recipe</summary>
-      <new-recipe-form></new-recipe-form>
-    </details>
+      <div id="recipe-card-container"></div>
 
-    <script src="/js/NewRecipeForm.js"></script>
+      <template id="recipe-card">
+        <div id="card-recipe" class="card">
+          <header class="recipe-name">
+            <h2 id="recipe-card-name">Recipe Name</h2>
+            <div>
+              <img src="/assets/delete.svg" alt="Delete" class="svg-btn" />
+              <img src="/assets/edit.svg" alt="Edit" class="svg-btn" />
+            </div>
+          </header>
 
-    <div id="card-recipe" class="card">
-      <header>
-        <h2>Recipe Name</h2>
-      </header>
+          <p class="recipe-description" id="recipe-card-description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            consequatur, assumenda, a quae neque iste, eveniet facere
+            accusantium dignissimos minima sapiente vero. Corrupti dignissimos
+            molestias, accusamus amet exercitationem dolorem reiciendis.
+          </p>
 
-      <p class="recipe-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-        consequatur, assumenda, a quae neque iste, eveniet facere accusantium
-        dignissimos minima sapiente vero. Corrupti dignissimos molestias,
-        accusamus amet exercitationem dolorem reiciendis.
-      </p>
-      
-      <ul class="ingredients-list">
-        <li>item X</li>
-        <li>item X</li>
-        <li>item X</li>
-        <li>item X</li>
-      </ul>
+          <ul class="ingredients-list" id="recipe-card-ingredient-list"></ul>
 
-      <ul class="tag-list">
-        <li class="tag">tag</li>
-        <li class="tag">tag</li>
-        <li class="tag">tag</li>
-        <li class="tag">tag</li>
-      </ul>
-    </div>
+          <ul class="tag-list" id="recipe-card-tag-list"></ul>
+        </div>
+      </template>
+    </main>
 
-  </main>
-
-  <footer>
-    <span>Made with love and care ❤️</span>
-  </footer>
-</body>
-
+    <footer>
+      <span>Made with love and care ❤️</span>
+    </footer>
+  </body>
 </html>
+
+<script>
+  function removeEntry(index) {
+    const recipeArray = JSON.parse(localStorage.getItem("recipes") || []);
+    recipeArray.filter((obj) => obj.index !== index);
+
+    localStorage.setItem("recipes", JSON.stringify(recipeArray));
+  }
+</script>

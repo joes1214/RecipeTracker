@@ -14,6 +14,8 @@
 
   --card-bg-color: hsl(2, 56%, 52%, 5%);
   --card-box-shadow: hsl(0, 56%, 7%, 20%) 1.95px 1.95px 2.6px;
+
+  --screen-size-lg: 1480px;
 }
 
 body {
@@ -59,15 +61,26 @@ h1 {
 .card {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: .5rem;
 
   margin: 0 auto;
   /* outline: 1px black solid; */
+  width: 350px;
   max-width: 500px;
   padding: 0.5rem;
   border-radius: var(--border-radius);
   background-color: var(--card-bg-color);
   box-shadow: var(--card-box-shadow);
+}
+
+#recipe-card-container{
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: var(--screen-size-lg);
+  padding: 0 2rem;
+  gap: 1rem;
 }
 
 .ingredients-list {
@@ -171,4 +184,22 @@ textarea {
 
 .flow > * + * {
   margin-top: 1em;
+}
+
+.recipe-name {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.recipe-name > div {
+  display: flex;
+  margin-left: auto;
+  gap: .5rem;
+}
+
+.svg-btn {
+  height: 100%;
+  width: 32px;
+  color: red;
 }

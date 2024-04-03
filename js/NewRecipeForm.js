@@ -33,20 +33,19 @@ template.innerHTML = `
   
   <button type="submit" class="btn" onsubmit="onSubmit(event)">Submit</button>
 </form>
-`
+`;
 
 class NewRecipeForm extends HTMLElement {
   constructor() {
     super();
-    this.shadow = this.attachShadow({ mode: 'open' });
+    this.shadow = this.attachShadow({ mode: "open" });
     this.recipeData = {
-      recipeName: '',
-      recipeDescription: '',
+      recipeName: "",
+      recipeDescription: "",
       recipeIngredients: [],
       recipeTags: [],
-    }
+    };
   }
-
 
   connectedCallback() {
     this.render();
@@ -62,66 +61,103 @@ class NewRecipeForm extends HTMLElement {
   }
 
   addEventListeners() {
-    const form = this.shadow.querySelector('#new-recipe-input');
-    const ingredientListContainer = this.shadow.querySelector('#ingredient-list-container')
-    const addIngredientButton = this.shadow.querySelector('#add-ingredient')
+    const form = this.shadow.querySelector("#new-recipe-input");
+    const ingredientListContainer = this.shadow.querySelector(
+      "#ingredient-list-container"
+    );
+    const addIngredientButton = this.shadow.querySelector("#add-ingredient");
 
-    addIngredientButton.addEventListener('click', () => {
+    addIngredientButton.addEventListener("click", () => {
       const ingredientCount = ingredientListContainer.childElementCount + 1;
-      const newIngredientInput = document.createElement('div');
-      newIngredientInput.classList.add('form-input');
+      const newIngredientInput = document.createElement("div");
+      newIngredientInput.classList.add("form-input");
       newIngredientInput.innerHTML = `
       <label for="recipe-ingredient-${ingredientCount}" class="form-label">Ingredient ${ingredientCount}:</label>
       <input type="text" name="recipe-ingredient-${ingredientCount}" id="recipe-ingredient-${ingredientCount}" placeholder="Ingredient ${ingredientCount}" />
-      `
+      `;
       ingredientListContainer.appendChild(newIngredientInput);
-    })
-    form.addEventListener('submit', (event) => {
+    });
+    form.addEventListener("submit", (event) => {
       this.onSubmit(event);
     });
 
-    const recipeNameInput = this.shadow.querySelector('#recipe-name-input');
-    const recipeDescriptionInput = this.shadow.querySelector('#recipe-description-input');
+    const recipeNameInput = this.shadow.querySelector("#recipe-name-input");
+    const recipeDescriptionInput = this.shadow.querySelector(
+      "#recipe-description-input"
+    );
     // const recipeIngredients = this.shadow.querySelector('#recipe-name-input');
-    const recipeTagsInput = this.shadow.querySelector('#recipe-tags-input');
+    const recipeTagsInput = this.shadow.querySelector("#recipe-tags-input");
 
-    recipeNameInput.addEventListener('input', (e) => {
+    recipeNameInput.addEventListener("input", (e) => {
       this.recipeData.recipeName = e.target.value;
     });
 
-    recipeDescriptionInput.addEventListener('input', (e) => {
+    recipeDescriptionInput.addEventListener("input", (e) => {
       this.recipeData.recipeDescription = e.target.value;
     });
 
-    recipeTagsInput.addEventListener('input', (e) => {
-      this.recipeData.recipeTags = [...e.target.value.split(',').map((str) => str.trim()).filter((str) => str !== "")];
+    recipeTagsInput.addEventListener("input", (e) => {
+      this.recipeData.recipeTags = [
+        ...e.target.value
+          .split(",")
+          .map((str) => str.trim())
+          .filter((str) => str !== ""),
+      ];
     });
   }
 
   onSubmit(event) {
     event.preventDefault();
-    const ingredientInputs = Array.from(this.shadow.querySelectorAll(`input[id^="recipe-ingredient-"]`));
-    const ingredients = ingredientInputs.map((input) => input.value.trim()).filter((val) => val !== '');
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+
+    const ingredientInputs = Array.from(
+      this.shadow.querySelectorAll(`input[id^="recipe-ingredient-"]`)
+    );
+    this.recipeData.recipeId = this.uuidv4();
+    const ingredients = ingredientInputs
+      .map((input) => input.value.trim())
+      .filter((val) => val !== "");
     this.recipeData.recipeIngredients = [...ingredients];
     const recipeData = this.recipeData;
-    console.log(recipeData);
 
-    const ingredientListContainer = this.shadow.querySelector('#ingredient-list-container');
+    // console.log(recipeData);
+
+    const ingredientListContainer = this.shadow.querySelector(
+      "#ingredient-list-container"
+    );
     ingredientListContainer.innerHTML = `
       <div class="form-input">
         <label for="recipe-ingredient-1" class="form-label">Ingredient 1:</label>
         <input type="text" name="recipe-ingredient-1" id="recipe-ingredient-1" placeholder="Ingredient 1" />
       </div>
     `;
-  
+
     // Reset other form fields
-    const recipeNameInput = this.shadow.querySelector('#recipe-name-input');
-    const recipeDescriptionInput = this.shadow.querySelector('#recipe-description-input');
-    const recipeTagsInput = this.shadow.querySelector('#recipe-tags-input');
-    recipeNameInput.value = '';
-    recipeDescriptionInput.value = '';
-    recipeTagsInput.value = '';
+    const recipeNameInput = this.shadow.querySelector("#recipe-name-input");
+    const recipeDescriptionInput = this.shadow.querySelector(
+      "#recipe-description-input"
+    );
+    const recipeTagsInput = this.shadow.querySelector("#recipe-tags-input");
+    recipeNameInput.value = "";
+    recipeDescriptionInput.value = "";
+    recipeTagsInput.value = "";
+
+    //Append to current list, then save
+    recipes.push(recipeData);
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }
+
+  //Simple GUID generator from https://www.geeksforgeeks.org/how-to-create-a-guid-uuid-in-javascript/
+  uuidv4() {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0,
+          v = c == "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+    );
   }
 }
 
-customElements.define('new-recipe-form', NewRecipeForm);
+customElements.define("new-recipe-form", NewRecipeForm);
