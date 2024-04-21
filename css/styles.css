@@ -52,7 +52,7 @@ footer {
 h1 {
   width: fit-content;
   margin: 0 auto;
-  padding-bottom: .15em;
+  padding-bottom: 0.15em;
 
   font-size: 2.5rem;
   font-weight: 700;
@@ -62,7 +62,7 @@ h1 {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  gap: .5rem;
+  gap: 0.5rem;
 
   margin: 0 auto;
   /* outline: 1px black solid; */
@@ -74,7 +74,7 @@ h1 {
   box-shadow: var(--card-box-shadow);
 }
 
-#recipe-card-container{
+#recipe-card-container {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -93,7 +93,7 @@ h2 {
   width: fit-content;
 }
 
-.card>header>h2 {
+.card > header > h2 {
   margin: 0 auto;
 }
 
@@ -107,7 +107,7 @@ h2 {
 .tag {
   line-height: 1.25;
   background-color: var(--tag-bg);
-  padding: .25em 0.5em;
+  padding: 0.25em 0.5em;
   border-radius: var(--border-radius);
   user-select: none;
   font-weight: 500;
@@ -116,7 +116,7 @@ h2 {
 .new-recipe-form {
   /* width: clamp(400px, 750px, 25%); */
   background-color: var(--secondary);
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 #new-recipe-tab {
@@ -125,7 +125,7 @@ h2 {
 
 #new-recipe-tab summary {
   user-select: none;
-  margin: .5rem auto;
+  margin: 0.5rem auto;
 }
 
 #new-recipe-tab summary::marker {
@@ -142,36 +142,48 @@ h2 {
 .form-input {
   display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: 0.25rem;
 }
 
 .form-label {
   font-weight: 500;
-  margin-bottom: .25rem;
+  margin-bottom: 0.25rem;
 }
 
 input,
 textarea {
   margin: 0;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   background-color: var(--text-input-bg);
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
 }
 
 .ingredient-input-list {
   display: flex;
   flex-direction: column;
-  gap: .15rem;
+  gap: 0.15rem;
 }
 
 .btn {
   width: fit-content;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
   border: none;
   background-color: var(--accent);
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   color: var(--text-input-bg);
   font-weight: 600;
+}
+
+.btn-action {
+  background-color: var(--primary);
+}
+
+.btn.btn-action:hover {
+  background-color: hsl(2, 56%, 40%);
+}
+
+.btn.btn-action:active {
+  background-color: hsl(2, 56%, 30%);
 }
 
 .btn:hover {
@@ -195,7 +207,7 @@ textarea {
 .recipe-name > div {
   display: flex;
   margin-left: auto;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .svg-btn {

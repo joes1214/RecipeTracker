@@ -28,10 +28,28 @@ function insertListToElement(template, selector, array, className = "") {
   })
 }
 
+function changeOnClick(template, id) {
+  const deleteBtn = template.querySelector("#delete-btn");
+  const editBtn = template.querySelector("#edit-btn");
+
+  deleteBtn.onclick = () => deleteRecipeOnClick(id);
+  editBtn.onclick = () => editRecipeOnClick(id);
+}
+
+function deleteRecipeOnClick(id) {
+  console.log("id of recipe: " + id);
+}
+
+function editRecipeOnClick(id) {
+  console.log("id of recipe: " + id);
+}
+
 function renderElements(recipes) {
   recipes.forEach((recipe, key) => {
     //Create a copy of the template element
     const recipeClone = recipeCardTemplate.content.cloneNode(true);
+
+    recipeClone.id = 'recipe.recipeId';
   
     insertToElement(recipeClone, '#recipe-card-name', recipe.recipeName);
     insertToElement(recipeClone, '#recipe-card-description', recipe.recipeDescription);
@@ -41,6 +59,8 @@ function renderElements(recipes) {
   
     insertListToElement(recipeClone, '#recipe-card-tag-list', 
     recipe.recipeTags, "tag")
+
+    changeOnClick(recipeClone, recipe.recipeId);
   
     recipeCardContainer.appendChild(recipeClone)
     // console.log("generate recipe card "+ key)
